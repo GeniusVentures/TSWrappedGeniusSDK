@@ -3,76 +3,76 @@
 namespace sgns
 {
 
-TransactionData::TransactionData(const TransactionData &tData)
-{
-  *this = tData;
-}
-
-TransactionData &TransactionData::operator=(const TransactionData &tData)
-{
-  if (this != &tData)
+  TransactionData::TransactionData(const TransactionData &tData)
   {
-    this->sourceAddress_ = tData.sourceAddress_;
-    this->destinationAddress_ = tData.destinationAddress_;
-    this->amount_ = tData.amount_;
-    this->data_ = tData.data_;
+    *this = tData;
   }
-  return *this;
-}
 
-bool TransactionData::operator==(const TransactionData &tData) const
-{
-  bool returnEqual = true;
-  returnEqual &= this->sourceAddress_ == tData.sourceAddress_;
-  returnEqual &= this->destinationAddress_ == tData.destinationAddress_;
-  returnEqual &= this->amount_ == tData.amount_;
-  returnEqual &= this->data_ == tData.data_;
-  return returnEqual;
-}
+  TransactionData &TransactionData::operator=(const TransactionData &tData)
+  {
+    if (this != &tData)
+    {
+      this->sourceAddress_ = tData.sourceAddress_;
+      this->destinationAddress_ = tData.destinationAddress_;
+      this->amount_ = tData.amount_;
+      this->data_ = tData.data_;
+    }
+    return *this;
+  }
 
-bool TransactionData::operator!=(const TransactionData &tData) const
-{
-  return !(*this == tData);
-}
+  bool TransactionData::operator==(const TransactionData &tData) const
+  {
+    bool returnEqual = true;
+    returnEqual &= this->sourceAddress_ == tData.sourceAddress_;
+    returnEqual &= this->destinationAddress_ == tData.destinationAddress_;
+    returnEqual &= this->amount_ == tData.amount_;
+    returnEqual &= this->data_ == tData.data_;
+    return returnEqual;
+  }
 
-void TransactionData::SetSourceAddress(const std::string& address)
-{
-  this->sourceAddress_ = address;
-}
+  bool TransactionData::operator!=(const TransactionData &tData) const
+  {
+    return !(*this == tData);
+  }
 
-std::string TransactionData::GetSourceAddress() const
-{
-  return this->sourceAddress_;
-}
+  void TransactionData::SetSourceAddress(const std::string &address)
+  {
+    this->sourceAddress_ = address;
+  }
 
-void TransactionData::SetDestinationAddress(const std::string& address)
-{
-  this->destinationAddress_ = address;
-}
+  std::string TransactionData::GetSourceAddress() const
+  {
+    return this->sourceAddress_;
+  }
 
-std::string TransactionData::GetDestinationAddress() const
-{
-  return this->destinationAddress_;
-}
+  void TransactionData::SetDestinationAddress(const std::string &address)
+  {
+    this->destinationAddress_ = address;
+  }
 
-void TransactionData::SetAmount(const double &amount)
-{
-  this->amount_ = amount;
-}
+  std::string TransactionData::GetDestinationAddress() const
+  {
+    return this->destinationAddress_;
+  }
 
-double TransactionData::GetAmount() const
-{
-  return this->amount_;
-}
+  void TransactionData::SetAmount(const double &amount)
+  {
+    this->amount_ = amount;
+  }
 
-void TransactionData::SetData(const std::string &data)
-{
-  this->data_ = data;
-}
+  double TransactionData::GetAmount() const
+  {
+    return this->amount_;
+  }
 
-std::string TransactionData::GetData() const
-{
-  return this->data_;
-}
+  void TransactionData::SetData(const std::string &data)
+  {
+    this->data_ = data;
+  }
+
+  std::string TransactionData::GetData() const
+  {
+    return this->data_;
+  }
 
 }
