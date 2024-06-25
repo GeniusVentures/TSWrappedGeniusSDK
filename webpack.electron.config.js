@@ -1,10 +1,10 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.tsx',
+  target: 'electron-main',
+  entry: './electron/main.ts',
   devtool: 'source-map',
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
@@ -37,29 +37,18 @@ module.exports = {
     ]
   },
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist/electron')
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: './public/index.html',
-      filename: 'index.html',
-      inject: 'body'
-    }),
     new CopyWebpackPlugin({
       patterns: [
-        { from: 'electron/preload.js', to: 'preload.js' }
+        { from: 'public', to: 'public' }
       ]
     })
   ],
-  devServer: {
-    static: {
-      directory: path.join(__dirname, 'public'),
-    },
-    compress: true,
-    port: 9000
-  },
-  externals: {
-    "koffi": "commonjs koffi"
+  node: {
+    __dirname: false,
+    __filename: false
   }
 };
