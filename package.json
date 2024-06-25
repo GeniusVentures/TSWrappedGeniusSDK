@@ -1,16 +1,33 @@
 {
-  "name": "sdkts",
+  "name": "TSWrappedGeniusSDK",
   "version": "1.0.0",
-  "main": "dist/index.js",
-  "license": "MIT",
+  "main": "dist/electron/main.js",
   "scripts": {
-	"start": "ts-node src/testsdk.ts",
-    "build": "tsc"
+    "start": "concurrently \"yarn webpack:serve\" \"yarn electron:serve\"",
+    "webpack:serve": "webpack serve --config webpack.config.js",
+    "electron:serve": "wait-on tcp:9000 && electron .",
+    "build": "tsc && webpack --config webpack.config.js",
+    "package": "electron-builder"
+  },
+  "packageManager": "yarn@3.6.4",
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "concurrently": "^8.2.2",
+    "copy-webpack-plugin": "^12.0.2",
+    "electron": "^31.0.2",
+    "html-webpack-plugin": "^5.6.0",
+    "source-map-loader": "^5.0.0",
+    "ts-loader": "^9.5.1",
+    "webpack": "^5.92.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
   },
   "dependencies": {
-    "@types/node": "^20.14.8",
     "koffi": "^2.8.11",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.5.2"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "^5.5.2",
+    "wait-on": "^7.2.0"
   }
 }
