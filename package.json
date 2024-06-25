@@ -1,17 +1,16 @@
 {
-  "name": "GeniusSDKWrappedTS",
-  "author": "Jesse Wachtel <jwachtel@decentralized-ventures.com>",
+  "name": "sdkts",
   "version": "1.0.0",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
+  "license": "MIT",
   "scripts": {
-    "install": "node-gyp rebuild",
+	"start": "ts-node src/testsdk.ts",
     "build": "tsc"
   },
   "dependencies": {
-    "node-addon-api": "^3.0.0"
-  },
-  "devDependencies": {
-    "typescript": "^4.0.0",
-    "@types/node": "^14.0.0"
+    "@types/node": "^20.14.8",
+    "koffi": "^2.8.11",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.2"
   }
 }
