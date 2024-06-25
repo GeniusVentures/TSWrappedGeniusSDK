@@ -7,7 +7,10 @@ module.exports = {
   entry: './src/index.tsx',
   devtool: 'source-map',
   resolve: {
-    extensions: ['.ts', '.tsx', '.js']
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    alias: {
+      'react-native$': 'react-native-web'
+    }
   },
   module: {
     rules: [
@@ -17,9 +20,20 @@ module.exports = {
         exclude: /node_modules/
       },
       {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'ts-loader',
+          options: {
+            allowJs: true
+          }
+        }
+      },
+      {
         enforce: 'pre',
         test: /\.js$/,
-        loader: 'source-map-loader'
+        loader: 'source-map-loader',
+        exclude: /node_modules/
       },
       {
         test: /\.node$/,
@@ -33,11 +47,13 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './public/index.html'
+      template: './public/index.html',
+      filename: 'index.html',
+      inject: 'body'
     }),
     new CopyWebpackPlugin({
       patterns: [
-        { from: 'electron/preload.js', to: 'preload.js' } // Adjusted path
+        { from: 'electron/preload.js', to: 'preload.js' }
       ]
     })
   ],

@@ -1,14 +1,13 @@
 import React, { useEffect } from 'react';
+import { initGnus, processGnus } from './geniusSDKWrapper';
 
 const App = () => {
   useEffect(() => {
-    // Replace with your initialization logic
-    console.log('Initializing Gnus SDK');
+    initGnus();
   }, []);
 
   const handleProcessGnus = () => {
-    // Replace with your processing logic
-    console.log('Processing Gnus');
+    processGnus("QmUDMvGQXbUKMsjmTzjf4ZuMx7tHx6Z4x8YH8RbwrgyGAf", 1);
   };
 
   return (
