@@ -1,34 +1,27 @@
 package com.myproject;
 
+import com.facebook.react.ReactPackage;
+import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
-import com.facebook.react.bridge.ReactContextBaseJavaModule;
-import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.uimanager.ViewManager;
 
-public class GeniusSDKModule extends ReactContextBaseJavaModule {
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-  static {
-    System.loadLibrary("GeniusSDK");
-  }
+public class GeniusSDKPackage implements ReactPackage {
 
-  public native void GeniusSDKInit();
-  public native void GeniusSDKProcess(String path, long amount);
+  @Override
+  public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
+    List<NativeModule> modules = new ArrayList<>();
 
-  GeniusSDKModule(ReactApplicationContext context) {
-    super(context);
+    modules.add(new GeniusSDKModule(reactContext));
+
+    return modules;
   }
 
   @Override
-  public String getName() {
-    return "GeniusSDKModule";
-  }
-
-  @ReactMethod
-  public void initGnus() {
-    GeniusSDKInit();
-  }
-
-  @ReactMethod
-  public void processGnus(String path, long amount) {
-    GeniusSDKProcess(path, amount);
+  public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
+    return Collections.emptyList();
   }
 }
