@@ -4,7 +4,7 @@ import path from 'path';
 let libraryPath: string;
 switch (process.platform) {
   case 'win32':
-    libraryPath = path.resolve(__dirname, '../../../GeniusSDK.dll');
+    libraryPath = path.resolve(__dirname, '../../GeniusSDK.dll');
     break;
   case 'darwin':
     libraryPath = path.resolve(__dirname, 'GeniusSDK.dylib');
