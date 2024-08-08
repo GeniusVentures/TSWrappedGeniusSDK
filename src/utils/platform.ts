@@ -1,5 +1,3 @@
-// src/utils/platform.ts
-
 import { Platform as RNPlatform } from "react-native";
 
 export class Platform {

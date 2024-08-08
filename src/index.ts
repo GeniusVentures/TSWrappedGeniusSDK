@@ -1,6 +1,6 @@
 import { Platform } from "./utils/platform";
 
-export const initializeSDK = (): void => {
+export const initGnus = (): void => {
   console.log("Initializing SDK...");
 
   const platform = Platform.getPlatform();
