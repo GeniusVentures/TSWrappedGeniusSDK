@@ -1,14 +1,19 @@
 {
   "compilerOptions": {
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "strict": true,
-    "module": "commonjs",
-    "target": "es6",
-    "esModuleInterop": true,
+    "target": "ES6", // You can also use "ES5" if you want to be more conservative
+    "module": "CommonJS", // React Native uses CommonJS modules
+    "lib": ["ES6", "DOM"], // Include DOM lib if you're interacting with browser APIs
+    "jsx": "react", // Use "react-native" if you are compiling JSX for React Native
+    "esModuleInterop": true, // Enable interoperability between CommonJS and ES Modules
+    "allowSyntheticDefaultImports": true, // Allows default imports from modules with no default export
+    "skipLibCheck": true, // Skips type checking of all declaration files
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true,
-    "resolveJsonModule": true
+    "strict": true, // Enable all strict type-checking options
+    "moduleResolution": "node", // Use Node.js style module resolution
+    "outDir": "./dist", // Output directory for compiled files
+    "declaration": true, // Generates corresponding .d.ts files
+    "sourceMap": true // Generates corresponding .map files
   },
-  "include": ["src"]
+  "include": ["src/**/*.ts"], // Include all .ts files in the src directory
+  "exclude": ["node_modules", "dist"] // Exclude the node_modules and dist directories
 }
