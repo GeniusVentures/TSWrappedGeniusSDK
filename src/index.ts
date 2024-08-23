@@ -8,9 +8,11 @@ export const initGnus = (): void => {
   console.log(`Running on platform: ${platform}`);
 
   if (platform === "Android") {
-    const { MyNativeModule } = NativeModules;
-    if (MyNativeModule) {
-      MyNativeModule.getNativeStringFromSo((result: string) => {
+    const { GeniusSDKModule } = NativeModules;
+    console.log(GeniusSDKModule);
+    if (GeniusSDKModule) {
+      console.log("MyNativeModuleTrue");
+      GeniusSDKModule.GeniusSDKInit((result: string) => {
         console.log(`Native string from .so file: ${result}`);
       });
     }

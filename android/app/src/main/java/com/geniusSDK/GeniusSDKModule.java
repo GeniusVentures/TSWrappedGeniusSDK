@@ -1,4 +1,4 @@
-package com.yourpackage;
+package com.GeniusSDK;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
