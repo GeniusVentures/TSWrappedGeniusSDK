@@ -1,31 +1,26 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'  // Include if you're using Kotlin
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 35
+    namespace 'com.GeniusSDK'
 
     defaultConfig {
-        applicationId "com.ts-wrapped-genius-sdk"
         minSdkVersion 21
         targetSdkVersion 35
         versionCode 1
-        versionName "1.0"
-        multiDexEnabled true 
+        versionName "1.0.0"
     }
 
     buildTypes {
+        debug {
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-        debug {
-            
         }
     }
 }
 
 dependencies {
-    implementation project(':GeniusSDK')  
     implementation 'com.facebook.react:react-native:+'
-  
 }
